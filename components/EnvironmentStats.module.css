@@ -1,0 +1,72 @@
+.container {
+  width: 100%;
+  padding: 1.5rem 1rem;
+  background-color: #F8F8F5;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.titleContainer {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.leafIcon {
+  width: 1rem;
+  height: 1rem;
+}
+
+.title {
+  color: #3B3B3B;
+  font-family: var(--font-paytone-one), sans-serif;
+  font-size: 1rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1.25rem;
+  margin: 0;
+}
+
+.statsContainer {
+  display: flex;
+  width: 100%;
+  justify-content: space-around;
+  align-items: center;
+  gap: 1rem;
+}
+
+.statItem {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  flex: 1;
+}
+
+.statValue {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin: 0;
+}
+
+.statValue.vintage {
+  color: #6B9E6B;
+}
+
+.statValue.upcycle {
+  color: #6B9E9E;
+}
+
+.statValue.carbon {
+  color: #C87D5A;
+}
+
+.statLabel {
+  font-size: 0.75rem;
+  color: #666;
+  margin: 0;
+  text-align: center;
+}
+

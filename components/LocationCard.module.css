@@ -1,0 +1,114 @@
+.card {
+  width: 100%;
+  padding: 1.25rem;
+  background-color: #F5F5F0;
+  border: 1px solid #E0E0D0;
+  border-radius: 0.75rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.cardBackground {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  pointer-events: none;
+}
+
+.square {
+  position: absolute;
+  border-radius: 0.25rem;
+}
+
+.squareTopLeft {
+  top: 0.75rem;
+  left: 0.75rem;
+  width: 1.5rem;
+  height: 1.5rem;
+  background-color: #C8E6C9;
+}
+
+.squareTopRight {
+  top: 0.75rem;
+  right: 0.75rem;
+  width: 2.5rem;
+  height: 2.5rem;
+  background-color: #C8E6C9;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.squareBottomLeft {
+  bottom: 0.75rem;
+  left: 0.75rem;
+  width: 2rem;
+  height: 2rem;
+  background-color: #FFCCBC;
+}
+
+.squareBottomRight {
+  bottom: 0.75rem;
+  right: 0.75rem;
+  width: 1.25rem;
+  height: 1.25rem;
+  background-color: #C8E6C9;
+}
+
+.cardContent {
+  position: relative;
+  z-index: 1;
+}
+
+.title {
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: #333;
+  margin: 0 0 0.5rem 0;
+  text-align: center;
+}
+
+.subtitle {
+  font-size: 0.875rem;
+  color: #666;
+  margin: 0;
+  text-align: center;
+}
+
+.button {
+  width: 100%;
+  height: 3rem;
+  margin-top: 0.75rem;
+  background-color: #849973;
+  border: none;
+  border-radius: 0.75rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.button:hover {
+  background-color: #6B8A5A;
+}
+
+.button:active {
+  background-color: #5A7350;
+}
+
+.buttonIcon {
+  width: 1.25rem;
+  height: 1.25rem;
+  color: white;
+}
+
+.buttonText {
+  color: white;
+  font-size: 1rem;
+  font-weight: 500;
+}
+
