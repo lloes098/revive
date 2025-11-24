@@ -105,6 +105,11 @@ export default function MyPage() {
     )
   }
 
+  // user가 없으면 렌더링하지 않음
+  if (!user) {
+    return null
+  }
+
   return (
     <div className="flex min-h-screen flex-col bg-[#F5F4EF]">
       <div className="flex-1 px-4 py-6 pb-24">
