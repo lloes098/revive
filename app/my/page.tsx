@@ -123,7 +123,7 @@ export default function MyPage() {
         <Card className="mb-4 p-6">
           <div className="flex items-center gap-4 mb-6">
             <div className="w-16 h-16 rounded-full bg-[#849973] flex items-center justify-center text-white text-2xl font-bold">
-              {user.name ? user.name[0] : user.email[0].toUpperCase()}
+              {user?.name?.[0] || user?.email?.[0]?.toUpperCase() || 'U'}
             </div>
             <div className="flex-1">
               {isEditing ? (
