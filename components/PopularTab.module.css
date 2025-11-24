@@ -1,0 +1,195 @@
+.container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  padding: 16px 0;
+  background-color: #F5F4EF;
+  min-height: calc(100vh - 200px);
+}
+
+.top3Section,
+.tagsSection {
+  width: 100%;
+  background-color: #F5F4EF;
+  border-radius: 0;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  box-sizing: border-box;
+}
+
+.sectionHeader {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.titleRow {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.sectionTitle {
+  font-family: 'Inter', 'Noto Sans KR', sans-serif;
+  font-size: 18px;
+  font-weight: 700;
+  color: #3b3b3b;
+  margin: 0;
+}
+
+.sectionSubtitle {
+  font-family: 'Inter', 'Noto Sans KR', sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  color: #6b6b6b;
+  margin: 0;
+}
+
+.membersList {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.memberCard {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 12px;
+  background-color: white;
+  border-radius: 12px;
+}
+
+.memberHeader {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.rankMedal {
+  flex-shrink: 0;
+}
+
+.medal {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.gold {
+  background: linear-gradient(135deg, #FFD700 0%, #FFA500 100%);
+}
+
+.silver {
+  background: linear-gradient(135deg, #C0C0C0 0%, #808080 100%);
+}
+
+.bronze {
+  background: linear-gradient(135deg, #CD7F32 0%, #8B4513 100%);
+}
+
+.medalText {
+  color: white;
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.memberInfo {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.memberNameRow {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.memberIcon {
+  font-size: 20px;
+}
+
+.memberName {
+  font-family: 'Inter', 'Noto Sans KR', sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  color: #3b3b3b;
+}
+
+.memberTitleRow {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.badgeIcon {
+  font-size: 14px;
+}
+
+.memberTitle {
+  font-family: 'Inter', 'Noto Sans KR', sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+  color: #6b6b6b;
+}
+
+.memberStats {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.stat {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.statLabel {
+  font-family: 'Inter', 'Noto Sans KR', sans-serif;
+  font-size: 12px;
+  font-weight: 400;
+  color: #6b6b6b;
+}
+
+.statValue {
+  font-family: 'Inter', 'Noto Sans KR', sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  color: #3b3b3b;
+}
+
+.tagsGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 8px;
+}
+
+.tag {
+  padding: 8px 12px;
+  background-color: #E8F5E9;
+  border: none;
+  border-radius: 20px;
+  font-family: 'Inter', 'Noto Sans KR', sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  color: #2E7D32;
+  cursor: pointer;
+  transition: all 0.2s;
+  text-align: center;
+}
+
+.tag:hover {
+  background-color: #C8E6C9;
+}
+

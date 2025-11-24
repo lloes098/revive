@@ -1,0 +1,140 @@
+.container {
+  width: 100%;
+  min-height: 100vh;
+  background: #F5F4EF;
+  padding: 0;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  padding-bottom: 80px;
+}
+
+.headerSection {
+  display: flex;
+  width: 100%;
+  padding: 2rem 1.5rem 0 1.5rem;
+  flex-direction: column;
+  align-items: flex-start;
+  background: linear-gradient(180deg, #849973 0%, #8AA6A3 50%, #849973 100%);
+  gap: 12px;
+  min-height: 195px;
+  padding-bottom: 0;
+  box-sizing: border-box;
+}
+
+.titleRow {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  height: 32px;
+  width: 100%;
+}
+
+.icon {
+  width: 24px;
+  height: 24px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.icon svg {
+  width: 24px;
+  height: 24px;
+}
+
+.title {
+  font-family: 'Inter', sans-serif;
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 32px;
+  color: white;
+  margin: 0;
+  letter-spacing: -0.6px;
+}
+
+.subtitle {
+  font-family: 'Inter', 'Noto Sans KR', sans-serif;
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 16px;
+  color: white;
+  opacity: 0.9;
+  margin: 0;
+  text-align: center;
+}
+
+.stats {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  margin-top: 4px;
+  opacity: 0.9;
+}
+
+.statRow {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  height: 30px;
+  line-height: 30px;
+}
+
+.statNumber {
+  font-family: 'Inter', 'Noto Sans KR', sans-serif;
+  font-weight: 700;
+  font-size: 20px;
+  color: #e5ffcf;
+  margin-right: 0;
+}
+
+.statText {
+  font-family: 'Inter', 'Noto Sans KR', sans-serif;
+  font-weight: 400;
+  font-size: 15px;
+  color: white;
+  margin-left: 0;
+}
+
+.tabsSection {
+  width: 100%;
+  margin-top: 24px;
+  margin-bottom: 32px;
+  padding: 0 24px;
+  box-sizing: border-box;
+}
+
+.contentSection {
+  width: 100%;
+  flex: 1;
+  background-color: #F5F4EF;
+  padding: 0 24px;
+  padding-bottom: 20px;
+  box-sizing: border-box;
+}
+
+.projectsGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+  width: 100%;
+}
+
+.productionList {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  width: 100%;
+}
+
+.tabContent {
+  padding: 16px;
+  min-height: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #6b6b6b;
+}
+

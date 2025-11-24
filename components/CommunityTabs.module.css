@@ -1,0 +1,38 @@
+.container {
+  background-color: #e8e7e2;
+  border-radius: 16px;
+  height: 36px;
+  padding: 3.5px 3px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 3px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.tab {
+  border: none;
+  background: transparent;
+  color: #3b3b3b;
+  font-family: 'Inter', 'Noto Sans KR', sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 20px;
+  cursor: pointer;
+  transition: all 0.2s;
+  border-radius: 16px;
+  padding: 5px 9px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.tab:hover {
+  background-color: rgba(255, 255, 255, 0.5);
+}
+
+.tab.active {
+  background-color: white;
+  font-weight: 500;
+}
+

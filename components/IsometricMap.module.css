@@ -1,0 +1,22 @@
+.mapContainer {
+  width: 100%;
+  height: 200px;
+  padding: 1rem;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(5px);
+  border-radius: 1rem;
+  margin: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.map {
+  width: 100%;
+  height: 100%;
+  max-width: 100%;
+}
+
+
+

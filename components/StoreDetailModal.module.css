@@ -1,0 +1,423 @@
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 1000;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+}
+
+.modal {
+  background: white;
+  width: 100%;
+  max-width: 100%;
+  max-height: 90vh;
+  border-radius: 1rem 1rem 0 0;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  animation: slideUp 0.3s ease-out;
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(100%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
+.navBar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem;
+  border-bottom: 1px solid #F0F0F0;
+  position: sticky;
+  top: 0;
+  background: white;
+  z-index: 10;
+}
+
+.backButton,
+.menuButton {
+  background: none;
+  border: none;
+  padding: 0.5rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.navTitle {
+  font-size: 1rem;
+  font-weight: 500;
+  color: #6b6b6b;
+  margin: 0;
+}
+
+.storeHeader {
+  padding: 1rem 1rem 0.75rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.actionButtons {
+  display: flex;
+  gap: 0.5rem;
+  padding: 0 1rem 1rem;
+}
+
+.actionButton {
+  flex: 1 0 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.25rem;
+  padding: 0.75rem 0.5rem;
+  background: white;
+  border: 1px solid #E8E7E2;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.actionButton:hover {
+  background: #F5F5F0;
+}
+
+.actionIcon {
+  width: 1.25rem;
+  height: 1.25rem;
+  flex-shrink: 0;
+}
+
+.actionButtonText {
+  font-size: 0.75rem;
+  color: #3B3B3B;
+  font-weight: 400;
+}
+
+.storeNameRow {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.storeName {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #3b3b3b;
+  margin: 0;
+}
+
+.statusTag {
+  display: inline-flex;
+  padding: 0.125rem 0.375rem;
+  background: #C57B57;
+  color: white;
+  border-radius: 0.625rem;
+  font-size: 0.75rem;
+  font-weight: 500;
+  white-space: nowrap;
+  height: 20px;
+  align-items: center;
+  justify-content: center;
+}
+
+.distanceRating {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.distance {
+  font-size: 0.875rem;
+  color: #6b6b6b;
+}
+
+.rating {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  font-size: 0.875rem;
+  color: #6b6b6b;
+  font-weight: 400;
+}
+
+.imageGallery {
+  position: relative;
+  width: 100%;
+  height: 300px;
+  background: #F5F5F0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.imagePlaceholder {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.imageDots {
+  position: absolute;
+  bottom: 1rem;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 0.5rem;
+}
+
+.dot,
+.dotActive {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: rgba(107, 107, 107, 0.3);
+}
+
+.dotActive {
+  background: #6b6b6b;
+}
+
+.content {
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.tag {
+  padding: 0.1875rem 0.4375rem;
+  background: white;
+  color: #8aa6a3;
+  border: 1px solid #8aa6a3;
+  border-radius: 0.625rem;
+  font-size: 0.75rem;
+  font-weight: 500;
+  height: 20px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.info {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.75rem;
+  height: 16px;
+}
+
+.hoursRow {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  color: #6b6b6b;
+}
+
+.hours {
+  font-weight: 400;
+  color: #6b6b6b;
+}
+
+.completed {
+  color: #849973;
+  font-weight: 400;
+  padding-left: 0.625rem;
+}
+
+.awards {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  padding-top: 0.6875rem;
+  border-top: 1px solid #e8e7e2;
+}
+
+.award {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 0.25rem 0.5rem;
+  background: rgba(132, 153, 115, 0.1);
+  border: none;
+  border-radius: 0.625rem;
+  font-size: 0.75rem;
+  color: #849973;
+  font-weight: 400;
+  height: 24px;
+}
+
+.basicInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  padding-top: 0.6875rem;
+  border-top: 1px solid #e8e7e2;
+}
+
+.locationSection {
+  padding: 1rem 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.locationHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.locationLeft {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex: 1;
+}
+
+.icon {
+  width: 1.25rem;
+  height: 1.25rem;
+  flex-shrink: 0;
+}
+
+.addressText {
+  font-size: 0.875rem;
+  color: #3b3b3b;
+}
+
+.locationRight {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.mapLink {
+  font-size: 0.875rem;
+  color: #999;
+}
+
+.subwayInfo {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-left: 1.5rem;
+}
+
+.subwayLine {
+  padding: 0.125rem 0.5rem;
+  background: #4CAF50;
+  color: white;
+  border-radius: 1rem;
+  font-size: 0.75rem;
+  font-weight: 500;
+}
+
+.subwayText {
+  font-size: 0.875rem;
+  color: #6b6b6b;
+}
+
+.divider {
+  height: 1px;
+  background: #e8e7e2;
+  width: 100%;
+}
+
+.descriptionSection {
+  padding: 1rem 0;
+}
+
+.description {
+  font-size: 0.875rem;
+  color: #3b3b3b;
+  line-height: 1.5;
+  margin: 0;
+}
+
+.hoursSection {
+  padding: 1rem 0;
+}
+
+.hoursHeader {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.hoursInfo {
+  flex: 1;
+}
+
+.openStatus {
+  font-size: 0.875rem;
+  color: #3b3b3b;
+}
+
+.contactInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  padding-top: 0.6875rem;
+  border-top: 1px solid #e8e7e2;
+}
+
+.contactRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.phoneRow {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.phone {
+  font-size: 0.875rem;
+  color: #6b6b6b;
+}
+
+.shareButton {
+  background: none;
+  border: none;
+  padding: 0.5rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.addressRow {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.address {
+  font-size: 0.875rem;
+  color: #6b6b6b;
+}
+

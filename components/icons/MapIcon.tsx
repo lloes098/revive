@@ -30,3 +30,5 @@ export default function MapIcon({ color = '#6B6B6B' }: MapIconProps) {
   )
 }
 
+
+

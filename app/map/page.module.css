@@ -1,0 +1,148 @@
+.page {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background: linear-gradient(180deg, #849973 0%, #8AA6A3 50%, #849973 100%);
+}
+
+.header {
+  padding: 1.5rem 1rem 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.headerTop {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.title {
+  color: white;
+  font-family: var(--font-paytone-one), sans-serif;
+  font-size: 1.5rem;
+  font-weight: 400;
+  line-height: 2rem;
+  margin: 0;
+}
+
+.subtitle {
+  color: white;
+  font-size: 0.875rem;
+  font-weight: 400;
+  line-height: 1.25rem;
+  margin: 0;
+  opacity: 0.9;
+}
+
+.statsCard {
+  margin: 1.5rem 1rem;
+  padding: 1.5rem;
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(10px);
+  border-radius: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.statsRow {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.statsText {
+  color: white;
+  font-size: 0.875rem;
+  line-height: 1.5rem;
+  display: flex;
+  align-items: baseline;
+  gap: 0.25rem;
+}
+
+.statsNumber {
+  color: #A8D5BA;
+  font-size: 1.75rem;
+  font-weight: 700;
+  line-height: 2rem;
+}
+
+.imagePlaceholder {
+  margin: 0 1rem 1rem;
+  width: calc(100% - 2rem);
+  height: 200px;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(5px);
+  border-radius: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px dashed rgba(255, 255, 255, 0.3);
+}
+
+.placeholderContent {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 0.875rem;
+}
+
+.content {
+  flex: 1;
+  padding: 0 1rem 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.locationText {
+  color: white;
+  font-size: 0.875rem;
+  font-weight: 500;
+  line-height: 1.25rem;
+}
+
+.filterButton {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  background: transparent;
+  border: 1px solid white;
+  border-radius: 0.5rem;
+  color: white;
+  font-size: 0.875rem;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.filterButton:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.filterButtonRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 1rem;
+}
+
+.storeSection {
+  background: #F5F5F0;
+  border-radius: 1rem 1rem 0 0;
+  padding: 1rem;
+  margin: 0 -1rem -1rem;
+  flex: 1;
+  min-height: 400px;
+}
+
+.storeList {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+

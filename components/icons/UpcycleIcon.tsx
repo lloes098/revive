@@ -51,3 +51,5 @@ export default function UpcycleIcon({ color = '#6B6B6B' }: UpcycleIconProps) {
   )
 }
 
+
+
