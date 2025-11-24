@@ -39,3 +39,4 @@ export default function CommunityIcon({ color = '#6B6B6B' }: CommunityIconProps)
 
 
 
+

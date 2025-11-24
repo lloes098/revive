@@ -13,13 +13,13 @@
 .headerSection {
   display: flex;
   width: 100%;
-  padding: 2rem 1.5rem 0 1.5rem;
+  padding: 2rem 1.5rem;
   flex-direction: column;
   align-items: flex-start;
+  justify-content: center;
   background: linear-gradient(180deg, #849973 0%, #8AA6A3 50%, #849973 100%);
   gap: 12px;
   min-height: 195px;
-  padding-bottom: 0;
   box-sizing: border-box;
 }
 
@@ -27,6 +27,7 @@
   display: flex;
   gap: 8px;
   align-items: center;
+  justify-content: flex-start;
   height: 32px;
   width: 100%;
 }
@@ -46,13 +47,13 @@
 }
 
 .title {
-  font-family: 'Inter', sans-serif;
+  color: #FFF;
+  font-family: Inter, sans-serif;
+  font-size: 1.875rem;
+  font-style: normal;
   font-weight: 700;
-  font-size: 24px;
-  line-height: 32px;
-  color: white;
+  line-height: 2.25rem;
   margin: 0;
-  letter-spacing: -0.6px;
 }
 
 .subtitle {
@@ -63,7 +64,8 @@
   color: white;
   opacity: 0.9;
   margin: 0;
-  text-align: center;
+  text-align: left;
+  width: 100%;
 }
 
 .stats {
@@ -72,6 +74,8 @@
   gap: 0;
   margin-top: 4px;
   opacity: 0.9;
+  align-items: flex-start;
+  width: 100%;
 }
 
 .statRow {
@@ -100,10 +104,11 @@
 
 .tabsSection {
   width: 100%;
-  margin-top: 24px;
+  margin-top: 0;
   margin-bottom: 32px;
-  padding: 0 24px;
+  padding: 24px 24px 0 24px;
   box-sizing: border-box;
+  background-color: transparent;
 }
 
 .contentSection {

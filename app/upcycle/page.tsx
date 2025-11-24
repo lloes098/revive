@@ -5,6 +5,7 @@ import UpcycleIcon from '@/components/icons/UpcycleIcon'
 import UpcycleTabs, { UpcycleTabId } from '@/components/UpcycleTabs'
 import UpcycleBiddingCard from '@/components/UpcycleBiddingCard'
 import ProductionCard from '@/components/ProductionCard'
+import CompletedCard from '@/components/CompletedCard'
 import styles from './page.module.css'
 
 const defaultProjects = [
@@ -72,6 +73,41 @@ const productionProjects = [
   },
 ]
 
+const completedProjects = [
+  {
+    id: '1',
+    image: '/placeholder-completed-1.jpg',
+    brand: '빈티지38',
+    title: '10년째 창고신세,\n그의 세련된 변신',
+    completedDate: '2024.11.20',
+    price: '65,000원',
+  },
+  {
+    id: '2',
+    image: '/placeholder-completed-2.jpg',
+    brand: '레트로하우스',
+    title: '사장님도 잊어버린\n90s 밴드티의 변신',
+    completedDate: '2024.11.18',
+    price: '45,000원',
+  },
+  {
+    id: '3',
+    image: '/placeholder-completed-3.jpg',
+    brand: '홍대빈티지',
+    title: '손상된 레더의\n럭셔리한 재탄생',
+    completedDate: '2024.11.15',
+    price: '89,000원',
+  },
+  {
+    id: '4',
+    image: '/placeholder-completed-4.jpg',
+    brand: '타임캡슐',
+    title: '빛바랜 실크의\n세상 우아한 귀환',
+    completedDate: '2024.11.12',
+    price: '35,000원',
+  },
+]
+
 export default function UpcyclePage() {
   const [activeTab, setActiveTab] = useState<UpcycleTabId>('voting')
 
@@ -109,7 +145,20 @@ export default function UpcyclePage() {
           </div>
         )
       case 'completed':
-        return <div className={styles.tabContent}>완료됨 내용</div>
+        return (
+          <div className={styles.projectsGrid}>
+            {completedProjects.map((project) => (
+              <CompletedCard
+                key={project.id}
+                image={project.image}
+                brand={project.brand}
+                title={project.title}
+                completedDate={project.completedDate}
+                price={project.price}
+              />
+            ))}
+          </div>
+        )
       default:
         return null
     }

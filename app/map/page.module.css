@@ -19,11 +19,12 @@
 }
 
 .title {
-  color: white;
-  font-family: var(--font-paytone-one), sans-serif;
-  font-size: 1.5rem;
-  font-weight: 400;
-  line-height: 2rem;
+  color: #FFF;
+  font-family: Inter, sans-serif;
+  font-size: 1.875rem;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 2.25rem;
   margin: 0;
 }
 
