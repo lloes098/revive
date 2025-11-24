@@ -24,7 +24,7 @@ export default function Home() {
       </section>
 
       {/* Section 3: Location Card */}
-      <section className={styles.section} style={{ minHeight: '6.25rem', overflow: 'visible', padding: '1rem' }}>
+      <section className={styles.section} style={{ minHeight: '6.25rem', overflow: 'visible', padding: '0.75rem 12px' }}>
         <LocationCard />
       </section>
 
@@ -33,12 +33,7 @@ export default function Home() {
         <EnvironmentStats />
       </section>
 
-      {/* 오늘의 업사이클링텝 */}
-      <section className={styles.section}>
-        <FilterButtons />
-      </section>
-
-      {/* 오늘의 추가 할인 상품 */}
+      {/* 오늘의 업사이클링템 */}
       <section className={styles.section}>
         <ProductSection />
       </section>

@@ -1,7 +1,7 @@
 .container {
   width: 100%;
   min-height: 100vh;
-  background: linear-gradient(180deg, #C57B57 0%, #8AA6A3 50%, #849973 100%);
+  background: linear-gradient(180deg, rgba(132, 153, 115, 0.15) 0%, rgba(245, 244, 239, 1) 30%);
   padding: 0;
   box-sizing: border-box;
   display: flex;
@@ -9,86 +9,104 @@
   align-items: stretch;
 }
 
-.headerSection {
-  display: flex;
+.loadingContainer {
   width: 100%;
-  padding: 2rem 1.5rem 0 1.5rem;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 12px;
-  box-sizing: border-box;
-}
-
-.titleRow {
-  display: flex;
-  gap: 8px;
-  align-items: center;
-  height: 36px;
-  width: 100%;
-}
-
-.icon {
-  width: 24px;
-  height: 24px;
-  flex-shrink: 0;
+  min-height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
+  background: #F5F4EF;
 }
 
-.icon svg {
-  width: 24px;
-  height: 24px;
+.loadingText {
+  color: #6B6B6B;
+  font-family: 'Inter', 'Noto Sans KR', sans-serif;
+  font-size: 16px;
 }
 
-.title {
+/* 헤더 */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.5rem 1.5rem 1rem 1.5rem;
+  background: transparent;
+}
+
+.headerTitle {
   font-family: 'Inter', 'Noto Sans KR', sans-serif;
   font-weight: 700;
-  font-size: 30px;
-  line-height: 36px;
-  color: white;
+  font-size: 1.875rem;
+  line-height: 2.25rem;
+  color: rgba(255, 255, 255, 0.9);
   margin: 0;
+  letter-spacing: -0.02em;
 }
 
-.contentSection {
-  width: 100%;
-  flex: 1;
-  overflow-y: auto;
-  padding: 0;
-  margin-top: 2rem;
-  box-sizing: border-box;
-  background-color: #F5F4EF;
-  padding: 0 24px;
+.settingsButton {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: rgba(255, 255, 255, 0.9);
+  transition: all 0.2s ease;
 }
 
+.settingsButton:hover {
+  color: rgba(255, 255, 255, 1);
+  transform: rotate(90deg);
+}
+
+/* 프로필 카드 */
 .profileCard {
-  background: linear-gradient(135deg, rgba(132, 153, 115, 0.10) 0%, rgba(138, 166, 163, 0.10) 100%);
-  border: 1px solid rgba(132, 153, 115, 0.30);
-  border-radius: 1rem;
-  padding: 24px;
-  margin-bottom: 16px;
-  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.10), 0 1px 2px -1px rgba(0, 0, 0, 0.10);
+  background: linear-gradient(135deg, rgba(132, 153, 115, 0.20) 0%, rgba(197, 123, 87, 0.20) 100%);
+  border-radius: 1.5rem;
+  padding: 1.5rem;
+  margin: 0 1.5rem 1.5rem 1.5rem;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
 }
 
 .profileHeader {
   display: flex;
-  align-items: center;
-  gap: 16px;
-  margin-bottom: 20px;
+  align-items: flex-start;
+  gap: 1rem;
+}
+
+.avatarContainer {
+  position: relative;
+  flex-shrink: 0;
 }
 
 .avatar {
-  width: 64px;
-  height: 64px;
+  width: 80px;
+  height: 80px;
   border-radius: 50%;
   background: linear-gradient(135deg, #849973 0%, #8AA6A3 100%);
   display: flex;
   align-items: center;
   justify-content: center;
   color: white;
-  font-size: 24px;
+  font-size: 32px;
   font-weight: 700;
-  flex-shrink: 0;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.avatarBadge {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 28px;
+  height: 28px;
+  background: white;
+  border-radius: 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  color: #849973;
 }
 
 .profileInfo {
@@ -96,162 +114,587 @@
   min-width: 0;
 }
 
+.profileNameRow {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 0.5rem;
+}
+
 .profileName {
   font-family: 'Inter', 'Noto Sans KR', sans-serif;
-  font-size: 20px;
+  font-size: 1.5rem;
   font-weight: 700;
-  color: #3B3B3B;
-  margin: 0 0 4px 0;
-}
-
-.profileEmail {
-  font-family: 'Inter', 'Noto Sans KR', sans-serif;
-  font-size: 14px;
-  font-weight: 400;
-  color: #6B6B6B;
+  color: #2B2B2B;
   margin: 0;
-  display: flex;
-  align-items: center;
-  gap: 6px;
+  letter-spacing: -0.02em;
 }
 
-.statsGrid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 12px;
-  margin-bottom: 16px;
-}
-
-.statCard {
-  background: #E8E7E2;
+.rankBadge {
+  padding: 0.25rem 0.75rem;
+  background: #C57B57;
+  color: white;
   border-radius: 1rem;
-  padding: 16px;
-  display: flex;
-  align-items: center;
-  gap: 12px;
-}
-
-.statIcon {
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  background: rgba(132, 153, 115, 0.15);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-shrink: 0;
-}
-
-.statContent {
-  flex: 1;
-  min-width: 0;
-}
-
-.statLabel {
   font-family: 'Inter', 'Noto Sans KR', sans-serif;
-  font-size: 12px;
+  font-size: 0.875rem;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.profileDescription {
+  font-family: 'Inter', 'Noto Sans KR', sans-serif;
+  font-size: 0.9375rem;
   font-weight: 400;
-  color: #6B6B6B;
-  margin: 0 0 4px 0;
-}
-
-.statValue {
-  font-family: 'Inter', 'Noto Sans KR', sans-serif;
-  font-size: 18px;
-  font-weight: 700;
   color: #3B3B3B;
-  margin: 0;
+  margin: 0 0 0.75rem 0;
+  line-height: 1.5;
 }
 
-.menuCard {
-  background: #E8E7E2;
-  border-radius: 1rem;
-  margin-bottom: 16px;
-  overflow: hidden;
-}
-
-.menuItem {
-  width: 100%;
-  padding: 16px;
+.followStats {
   display: flex;
-  align-items: center;
+  gap: 1rem;
+  font-family: 'Inter', 'Noto Sans KR', sans-serif;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #3B3B3B;
+}
+
+/* 획득한 뱃지 */
+.badgesSection {
+  background: #F5F4EF;
+  border-radius: 1rem;
+  padding: 1.25rem;
+  margin: 0 1.5rem 1.5rem 1.5rem;
+}
+
+.badgesHeader {
+  display: flex;
   justify-content: space-between;
-  background: transparent;
-  border: none;
-  cursor: pointer;
-  transition: background-color 0.2s;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.badgesTitleRow {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: #3B3B3B;
+}
+
+.badgesTitle {
+  font-family: 'Inter', 'Noto Sans KR', sans-serif;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #3B3B3B;
+}
+
+.badgesCount {
+  font-family: 'Inter', 'Noto Sans KR', sans-serif;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #6B6B6B;
+}
+
+.badgesList {
+  display: flex;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+  flex-wrap: wrap;
+}
+
+.badgeItem {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 0.75rem;
+  background: white;
+  border-radius: 0.75rem;
+  font-family: 'Inter', 'Noto Sans KR', sans-serif;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #3B3B3B;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.badgesProgress {
+  font-family: 'Inter', 'Noto Sans KR', sans-serif;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #C57B57;
   text-align: left;
 }
 
-.menuItem:hover {
-  background-color: rgba(132, 153, 115, 0.10);
+/* 액션 버튼 */
+.actionButtons {
+  display: flex;
+  gap: 0.75rem;
+  padding: 0 1.5rem;
+  margin-bottom: 1.5rem;
 }
 
-.menuItem:not(:last-child) {
-  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+.actionButton {
+  flex: 1;
+  padding: 0.875rem 1rem;
+  background: white;
+  border: 1px solid rgba(132, 153, 115, 0.2);
+  border-radius: 1rem;
+  font-family: 'Inter', 'Noto Sans KR', sans-serif;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: #3B3B3B;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-align: center;
 }
 
-.menuItemLeft {
+.actionButton:hover {
+  background: rgba(132, 153, 115, 0.05);
+  border-color: rgba(132, 153, 115, 0.3);
+}
+
+.actionButtonActive {
+  background: #3B3B3B;
+  color: white;
+  border-color: #3B3B3B;
+}
+
+.actionButtonActive:hover {
+  background: #2B2B2B;
+}
+
+/* 나의 활동 */
+.activitySection {
+  background: #F5F4EF;
+  border-radius: 1rem;
+  padding: 1.25rem;
+  margin: 0 1.5rem 1.5rem 1.5rem;
+}
+
+.activityHeader {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 0.5rem;
+  margin-bottom: 0.75rem;
 }
 
-.menuIcon {
-  width: 20px;
-  height: 20px;
-  flex-shrink: 0;
-}
-
-.menuText {
+.activityTitle {
   font-family: 'Inter', 'Noto Sans KR', sans-serif;
-  font-size: 16px;
-  font-weight: 500;
-  color: #3B3B3B;
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: #2B2B2B;
+  margin: 0;
+  letter-spacing: -0.01em;
 }
 
-.logoutButton {
-  width: 100%;
-  padding: 16px;
-  background: #E8E7E2;
-  border: 1px solid rgba(132, 153, 115, 0.30);
-  border-radius: 1rem;
+.activityDescription {
+  font-family: 'Inter', 'Noto Sans KR', sans-serif;
+  font-size: 0.875rem;
+  font-weight: 400;
   color: #6B6B6B;
+  margin: 0 0 1rem 0;
+  line-height: 1.5;
+}
+
+.activityButtons {
+  display: flex;
+  gap: 0.75rem;
+}
+
+.activityButtonPrimary {
+  flex: 1;
+  padding: 0.875rem 1rem;
+  background: #849973;
+  border: none;
+  border-radius: 0.875rem;
   font-family: 'Inter', 'Noto Sans KR', sans-serif;
-  font-size: 16px;
-  font-weight: 500;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: white;
   cursor: pointer;
-  transition: all 0.2s;
+  transition: all 0.2s ease;
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 8px;
-  margin-bottom: 24px;
+  gap: 0.5rem;
 }
 
-.logoutButton:hover {
-  background: rgba(132, 153, 115, 0.10);
-  border-color: rgba(132, 153, 115, 0.50);
+.activityButtonPrimary:hover {
+  background: #6B8A5A;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(132, 153, 115, 0.3);
 }
 
-.message {
-  margin-bottom: 16px;
-  padding: 12px 16px;
-  border-radius: 0.75rem;
+.activityButtonSecondary {
+  flex: 1;
+  padding: 0.875rem 1rem;
+  background: white;
+  border: 1.5px solid #849973;
+  border-radius: 0.875rem;
   font-family: 'Inter', 'Noto Sans KR', sans-serif;
-  font-size: 14px;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: #849973;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
 }
 
-.messageSuccess {
+.activityButtonSecondary:hover {
+  background: rgba(132, 153, 115, 0.05);
+  transform: translateY(-1px);
+}
+
+/* 내가 작성한 포스트 */
+.postsSection {
+  padding: 0 1.5rem 2rem 1.5rem;
+}
+
+.postsTitle {
+  font-family: 'Inter', 'Noto Sans KR', sans-serif;
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: #2B2B2B;
+  margin: 0 0 1rem 0;
+  letter-spacing: -0.01em;
+}
+
+.postsGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+}
+
+.postsList {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.postCard {
+  background: white;
+  border-radius: 1rem;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.postImage {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  background: #F5F4EF;
+  overflow: hidden;
+}
+
+.postImagePlaceholder {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, rgba(132, 153, 115, 0.1) 0%, rgba(197, 123, 87, 0.1) 100%);
+}
+
+.postBadge {
+  position: absolute;
+  top: 0.75rem;
+  left: 0.75rem;
+  padding: 0.375rem 0.75rem;
+  background: #849973;
+  color: white;
+  border-radius: 0.5rem;
+  font-family: 'Inter', 'Noto Sans KR', sans-serif;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  z-index: 1;
+}
+
+.postContent {
+  padding: 1rem;
+}
+
+.postTitle {
+  font-family: 'Inter', 'Noto Sans KR', sans-serif;
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: #2B2B2B;
+  margin: 0 0 0.5rem 0;
+  letter-spacing: -0.02em;
+}
+
+.postDescription {
+  font-family: 'Inter', 'Noto Sans KR', sans-serif;
+  font-size: 0.9375rem;
+  font-weight: 400;
+  color: #3B3B3B;
+  margin: 0 0 0.75rem 0;
+  line-height: 1.5;
+}
+
+.postEngagement {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+.engagementItem {
+  display: flex;
+  align-items: center;
+  gap: 0.375rem;
+  font-family: 'Inter', 'Noto Sans KR', sans-serif;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #6B6B6B;
+}
+
+.postDate {
+  font-family: 'Inter', 'Noto Sans KR', sans-serif;
+  font-size: 0.8125rem;
+  font-weight: 400;
+  color: #6B6B6B;
+  text-align: right;
+}
+
+/* 마이샵 섹션 */
+.shopSection {
+  padding: 0 1.5rem 2rem 1.5rem;
+}
+
+.shopHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+
+.shopTitleRow {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: #849973;
+}
+
+.shopTitle {
+  font-family: 'Inter', 'Noto Sans KR', sans-serif;
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: #2B2B2B;
+  margin: 0;
+  letter-spacing: -0.01em;
+}
+
+.sellerBadge {
+  padding: 0.375rem 0.875rem;
   background: rgba(132, 153, 115, 0.15);
-  color: #3B3B3B;
-  border: 1px solid rgba(132, 153, 115, 0.30);
+  border: 1px solid rgba(132, 153, 115, 0.3);
+  border-radius: 1rem;
+  font-family: 'Inter', 'Noto Sans KR', sans-serif;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: #849973;
+  white-space: nowrap;
 }
 
-.messageError {
-  background: rgba(197, 123, 87, 0.15);
-  color: #3B3B3B;
-  border: 1px solid rgba(197, 123, 87, 0.30);
+.reliabilitySection {
+  background: #F5F4EF;
+  border-radius: 1rem;
+  padding: 1.25rem;
+  margin-bottom: 1.5rem;
 }
 
+.reliabilityHeader {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.75rem;
+  color: #849973;
+}
 
+.reliabilityLabel {
+  font-family: 'Inter', 'Noto Sans KR', sans-serif;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #2B2B2B;
+  flex: 1;
+}
+
+.reliabilityValue {
+  font-family: 'Inter', 'Noto Sans KR', sans-serif;
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #849973;
+}
+
+.progressBar {
+  width: 100%;
+  height: 8px;
+  background: rgba(132, 153, 115, 0.15);
+  border-radius: 0.5rem;
+  overflow: hidden;
+}
+
+.progressFill {
+  height: 100%;
+  background: #849973;
+  border-radius: 0.5rem;
+  transition: width 0.3s ease;
+}
+
+.sellerMetrics {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+  padding: 0;
+}
+
+.metricItem {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 1rem;
+  background: #F5F4EF;
+  border-radius: 1rem;
+}
+
+.metricContent {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.metricValue {
+  font-family: 'Inter', 'Noto Sans KR', sans-serif;
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #2B2B2B;
+}
+
+.metricLabel {
+  font-family: 'Inter', 'Noto Sans KR', sans-serif;
+  font-size: 0.8125rem;
+  font-weight: 500;
+  color: #6B6B6B;
+}
+
+.shopProductsSection {
+  margin-top: 1.5rem;
+}
+
+.shopProductsTitle {
+  font-family: 'Inter', 'Noto Sans KR', sans-serif;
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: #2B2B2B;
+  margin: 0;
+  letter-spacing: -0.01em;
+}
+
+.feedSection {
+  padding: 0 1.5rem 2rem 1.5rem;
+}
+
+/* 환경 보호 효과 섹션 */
+.environmentSection {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(248, 248, 245, 0.98) 100%);
+  border: 1.5px solid rgba(132, 153, 115, 0.20);
+  border-radius: 1.5rem;
+  padding: 1.75rem;
+  margin: 0 1.5rem 2rem 1.5rem;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08), 0 2px 4px rgba(0, 0, 0, 0.04);
+  backdrop-filter: blur(10px);
+}
+
+.environmentHeader {
+  display: flex;
+  align-items: center;
+  gap: 0.625rem;
+  margin-bottom: 0.875rem;
+  color: #849973;
+}
+
+.environmentTitle {
+  font-family: 'Inter', 'Noto Sans KR', sans-serif;
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #2B2B2B;
+  margin: 0;
+  letter-spacing: -0.02em;
+  line-height: 1.4;
+}
+
+.environmentSubtitle {
+  font-family: 'Inter', 'Noto Sans KR', sans-serif;
+  font-size: 0.9375rem;
+  font-weight: 500;
+  color: #6B6B6B;
+  margin: 0 0 1.75rem 0;
+  line-height: 1.5;
+  letter-spacing: -0.01em;
+}
+
+.environmentMetrics {
+  display: flex;
+  gap: 1rem;
+}
+
+.metricCard {
+  flex: 1;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.98) 0%, rgba(248, 248, 245, 0.95) 100%);
+  border: 1.5px solid rgba(132, 153, 115, 0.15);
+  border-radius: 1.25rem;
+  padding: 1.25rem 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.625rem;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06), 0 1px 4px rgba(0, 0, 0, 0.04);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  backdrop-filter: blur(10px);
+}
+
+.metricCard:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12), 0 3px 8px rgba(0, 0, 0, 0.08);
+  border-color: rgba(132, 153, 115, 0.25);
+}
+
+.metricCard svg {
+  color: #849973;
+  flex-shrink: 0;
+  transition: all 0.3s ease;
+}
+
+.metricCard:hover svg {
+  transform: scale(1.1);
+  color: #6B8A5A;
+}
+
+.metricLabel {
+  font-family: 'Inter', 'Noto Sans KR', sans-serif;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: #6B6B6B;
+  text-align: center;
+  letter-spacing: -0.01em;
+}
+
+.metricValue {
+  font-family: 'Inter', 'Noto Sans KR', sans-serif;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #849973;
+  text-align: center;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+}
+
+.metricUnit {
+  font-family: 'Inter', 'Noto Sans KR', sans-serif;
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: #6B6B6B;
+  text-align: center;
+  letter-spacing: -0.01em;
+}

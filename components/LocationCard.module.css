@@ -1,11 +1,13 @@
 .card {
   width: 100%;
-  padding: 1.25rem;
-  background-color: #F5F5F0;
-  border: 1px solid #E0E0D0;
-  border-radius: 0.75rem;
+  padding: 1.5rem;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.9) 0%, rgba(245, 245, 240, 0.95) 100%);
+  border: 1px solid rgba(132, 153, 115, 0.2);
+  border-radius: 1rem;
   position: relative;
   overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+  backdrop-filter: blur(10px);
 }
 
 .cardBackground {
@@ -63,41 +65,47 @@
 }
 
 .title {
-  font-size: 1.125rem;
-  font-weight: 600;
-  color: #333;
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #2B2B2B;
   margin: 0 0 0.5rem 0;
   text-align: center;
+  letter-spacing: -0.01em;
 }
 
 .subtitle {
   font-size: 0.875rem;
-  color: #666;
+  color: #6B6B6B;
   margin: 0;
   text-align: center;
+  font-weight: 400;
 }
 
 .button {
   width: 100%;
   height: 3rem;
-  margin-top: 0.75rem;
-  background-color: #849973;
+  margin-top: 1rem;
+  background: linear-gradient(135deg, #849973 0%, #8AA6A3 100%);
   border: none;
-  border-radius: 0.75rem;
+  border-radius: 0.875rem;
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 0.5rem;
   cursor: pointer;
-  transition: background-color 0.2s;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 8px rgba(132, 153, 115, 0.25);
 }
 
 .button:hover {
-  background-color: #6B8A5A;
+  background: linear-gradient(135deg, #6B8A5A 0%, #7A9A97 100%);
+  box-shadow: 0 4px 12px rgba(132, 153, 115, 0.35);
+  transform: translateY(-1px);
 }
 
 .button:active {
-  background-color: #5A7350;
+  background: linear-gradient(135deg, #5A7350 0%, #6A8A87 100%);
+  transform: translateY(0);
 }
 
 .buttonIcon {

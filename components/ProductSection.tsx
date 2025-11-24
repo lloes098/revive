@@ -2,6 +2,7 @@
 
 import styles from './ProductSection.module.css'
 import ProductCard from './ProductCard'
+import FilterButtons from './FilterButtons'
 
 interface Product {
   id: string
@@ -50,6 +51,7 @@ export default function ProductSection({
 }: ProductSectionProps) {
   return (
     <div className={styles.container}>
+      <FilterButtons />
       <div className={styles.header}>
         <h2 className={styles.title}>{title}</h2>
         <a className={styles.viewMore} onClick={onViewMoreClick}>

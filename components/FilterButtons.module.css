@@ -1,6 +1,6 @@
 .container {
   width: 100%;
-  padding: 1rem;
+  padding: 0;
   display: flex;
   flex-wrap: wrap;
   gap: 0.5rem;
@@ -10,27 +10,32 @@
 
 .button {
   display: flex;
-  height: 2.375rem;
-  padding: 0.5625rem 0.7646rem 0.5625rem 0.8125rem;
+  height: 2.5rem;
+  padding: 0.625rem 1rem;
   justify-content: center;
   align-items: center;
-  border-radius: 0.75rem;
-  border: 1px solid #D4D3CE;
+  border-radius: 0.875rem;
+  border: 1.5px solid rgba(212, 211, 206, 0.6);
   background-color: white;
   cursor: pointer;
-  transition: all 0.2s;
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
   white-space: nowrap;
   font-size: 0.875rem;
-  color: #333;
+  font-weight: 500;
+  color: #3B3B3B;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
 }
 
 .button:hover {
-  background-color: #F5F5F0;
-  border-color: #849973;
+  background: linear-gradient(135deg, rgba(132, 153, 115, 0.08) 0%, rgba(138, 166, 163, 0.08) 100%);
+  border-color: rgba(132, 153, 115, 0.4);
+  box-shadow: 0 2px 6px rgba(132, 153, 115, 0.15);
+  transform: translateY(-1px);
 }
 
 .button:active {
-  background-color: #E8E8E0;
+  background: rgba(132, 153, 115, 0.12);
+  transform: translateY(0);
 }
 
 .buttonContent {
