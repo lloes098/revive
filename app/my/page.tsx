@@ -154,14 +154,14 @@ export default function MyPage() {
               ) : (
                 <>
                   <h2 className="text-xl font-semibold text-[#3B3B3B] mb-1">
-                    {user.name || '사용자'}
+                    {user?.name || '사용자'}
                   </h2>
                   <div className="flex items-center gap-2 text-sm text-[#6B6B6B] mb-2">
                     <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                       <path d="M2.66667 3.33333C2.66667 2.59695 3.26362 2 4 2H12C12.7364 2 13.3333 2.59695 13.3333 3.33333V12.6667C13.3333 13.403 12.7364 14 12 14H4C3.26362 14 2.66667 13.403 2.66667 12.6667V3.33333Z" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
                       <path d="M2.66667 5.33333H13.3333" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
                     </svg>
-                    <span>{user.email}</span>
+                    <span>{user?.email || ''}</span>
                   </div>
                   <Button
                     onClick={() => setIsEditing(true)}
