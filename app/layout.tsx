@@ -17,6 +17,9 @@ const inter = Inter({
 export const metadata: Metadata = {
   title: 'Revive',
   description: 'A Next.js web application',
+  icons: {
+    icon: '/favicon.svg',
+  },
 }
 
 export default function RootLayout({
