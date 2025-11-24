@@ -92,11 +92,12 @@ export default function MyPage() {
         <div className={styles.profileHeader}>
           <div className={styles.avatarContainer}>
             <div className={styles.avatar}>
-              {user?.name?.[0] || user?.email?.[0]?.toUpperCase() || 'U'}
+              1
             </div>
             <div className={styles.avatarBadge}>
-              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M2 4L8 1L14 4V9C14 12.5 8 15 8 15C8 15 2 12.5 2 9V4Z" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+              <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M9 1L2 4.5V9C2 13.5 5.5 16.5 9 17.5C12.5 16.5 16 13.5 16 9V4.5L9 1Z" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                <path d="M9 5.5V9.5L12 10.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
               </svg>
             </div>
           </div>
@@ -120,8 +121,8 @@ export default function MyPage() {
       <div className={styles.badgesSection}>
         <div className={styles.badgesHeader}>
           <div className={styles.badgesTitleRow}>
-            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M8 1L9.545 4.13L13 4.635L10.5 7.07L11.09 10.51L8 8.885L4.91 10.51L5.5 7.07L3 4.635L6.455 4.13L8 1Z" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+            <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M9 1L10.545 4.13L14 4.635L11.5 7.07L12.09 10.51L9 8.885L5.91 10.51L6.5 7.07L4 4.635L7.455 4.13L9 1Z" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
             </svg>
             <span className={styles.badgesTitle}>획득한 뱃지</span>
           </div>
@@ -129,20 +130,20 @@ export default function MyPage() {
         </div>
         <div className={styles.badgesList}>
           <div className={styles.badgeItem}>
-            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M10 2L12.09 7.26L18 8.27L14 12.14L14.91 18.02L10 15.77L5.09 18.02L6 12.14L2 8.27L7.91 7.26L10 2Z" stroke="#C57B57" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M8 1L9.545 4.13L13 4.635L10.5 7.07L11.09 10.51L8 8.885L4.91 10.51L5.5 7.07L3 4.635L6.455 4.13L8 1Z" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
             </svg>
             <span>친환경 챔피언</span>
           </div>
           <div className={styles.badgeItem}>
-            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M10 2L12.09 7.26L18 8.27L14 12.14L14.91 18.02L10 15.77L5.09 18.02L6 12.14L2 8.27L7.91 7.26L10 2Z" stroke="#C57B57" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M8 1L9.545 4.13L13 4.635L10.5 7.07L11.09 10.51L8 8.885L4.91 10.51L5.5 7.07L3 4.635L6.455 4.13L8 1Z" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
             </svg>
             <span>90s 마니아</span>
           </div>
           <div className={styles.badgeItem}>
-            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M10 2L12.09 7.26L18 8.27L14 12.14L14.91 18.02L10 15.77L5.09 18.02L6 12.14L2 8.27L7.91 7.26L10 2Z" stroke="#C57B57" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M8 1L9.545 4.13L13 4.635L10.5 7.07L11.09 10.51L8 8.885L4.91 10.51L5.5 7.07L3 4.635L6.455 4.13L8 1Z" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
             </svg>
             <span>커뮤니티 리더</span>
           </div>
