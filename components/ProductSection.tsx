@@ -1,5 +1,6 @@
 'use client'
 
+import Link from 'next/link'
 import styles from './ProductSection.module.css'
 import ProductCard from './ProductCard'
 import FilterButtons from './FilterButtons'
@@ -24,7 +25,7 @@ interface ProductSectionProps {
 const defaultProducts: Product[] = [
   {
     id: '1',
-    image: '/placeholder-product-1.jpg',
+    image: 'https://images.unsplash.com/photo-1542272604-787c3835535d?w=400&h=400&fit=crop',
     badge: 'A+등급',
     brand: '빈티지38 x 김민수',
     productName: "Levi's 501 데님",
@@ -34,7 +35,7 @@ const defaultProducts: Product[] = [
   },
   {
     id: '2',
-    image: '/placeholder-product-2.jpg',
+    image: 'https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=400&h=400&fit=crop',
     badge: 'S등급',
     brand: '올드서울 x 박지영',
     productName: '밀리터리 재킷',
@@ -54,9 +55,13 @@ export default function ProductSection({
       <FilterButtons />
       <div className={styles.header}>
         <h2 className={styles.title}>{title}</h2>
-        <a className={styles.viewMore} onClick={onViewMoreClick}>
+        <Link 
+          href="/upcycle" 
+          className={styles.viewMore}
+          onClick={onViewMoreClick}
+        >
           더보기 <span className={styles.arrow}>→</span>
-        </a>
+        </Link>
       </div>
       <div className={styles.productsContainer}>
         {products.map((product) => (

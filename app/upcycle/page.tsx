@@ -11,7 +11,7 @@ import styles from './page.module.css'
 const defaultProjects = [
   {
     id: '1',
-    image: '/placeholder-upcycle-1.jpg',
+    image: 'https://images.unsplash.com/photo-1542272604-787c3835535d?w=400&h=400&fit=crop',
     brand: '빈티지38',
     title: '10년째 창고신세,\n그의 세련된 변신',
     progress: 68,
@@ -19,7 +19,7 @@ const defaultProjects = [
   },
   {
     id: '2',
-    image: '/placeholder-upcycle-2.jpg',
+    image: 'https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=400&h=400&fit=crop',
     brand: '레트로하우스',
     title: '사장님도 잊어버린 90s 밴드티의 변신',
     progress: 54,
@@ -27,7 +27,7 @@ const defaultProjects = [
   },
   {
     id: '3',
-    image: '/placeholder-upcycle-3.jpg',
+    image: 'https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=400&h=400&fit=crop',
     brand: '홍대빈티지',
     title: '손상된 레더의\n럭셔리한 재탄생',
     progress: 82,
@@ -35,7 +35,7 @@ const defaultProjects = [
   },
   {
     id: '4',
-    image: '/placeholder-upcycle-4.jpg',
+    image: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400&h=400&fit=crop',
     brand: '타임캡슐',
     title: '빛바랜 실크의\n세상 우아한 귀환',
     progress: 45,
@@ -46,7 +46,7 @@ const defaultProjects = [
 const productionProjects = [
   {
     id: '1',
-    image: '/placeholder-production-1.jpg',
+    image: 'https://images.unsplash.com/photo-1541099649105-f69ad21f3246?w=400&h=400&fit=crop',
     brand: '올드스쿨',
     title: '먼지 쌓인 데님\n화려한 변신',
     progress: 75,
@@ -55,7 +55,7 @@ const productionProjects = [
   },
   {
     id: '2',
-    image: '/placeholder-production-2.jpg',
+    image: 'https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=400&h=400&fit=crop',
     brand: '빈티지마켓',
     title: '해골티의\n새로운 시작',
     progress: 30,
@@ -64,7 +64,7 @@ const productionProjects = [
   },
   {
     id: '3',
-    image: '/placeholder-production-3.jpg',
+    image: 'https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=400&h=400&fit=crop',
     brand: '아카이브샵',
     title: '낡은 가죽이\n프리미엄으로',
     progress: 95,
@@ -76,7 +76,7 @@ const productionProjects = [
 const completedProjects = [
   {
     id: '1',
-    image: '/placeholder-completed-1.jpg',
+    image: 'https://images.unsplash.com/photo-1542272604-787c3835535d?w=400&h=400&fit=crop',
     brand: '빈티지38',
     title: '10년째 창고신세,\n그의 세련된 변신',
     completedDate: '2024.11.20',
@@ -84,7 +84,7 @@ const completedProjects = [
   },
   {
     id: '2',
-    image: '/placeholder-completed-2.jpg',
+    image: 'https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=400&h=400&fit=crop',
     brand: '레트로하우스',
     title: '사장님도 잊어버린\n90s 밴드티의 변신',
     completedDate: '2024.11.18',
@@ -92,7 +92,7 @@ const completedProjects = [
   },
   {
     id: '3',
-    image: '/placeholder-completed-3.jpg',
+    image: 'https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=400&h=400&fit=crop',
     brand: '홍대빈티지',
     title: '손상된 레더의\n럭셔리한 재탄생',
     completedDate: '2024.11.15',
@@ -100,7 +100,7 @@ const completedProjects = [
   },
   {
     id: '4',
-    image: '/placeholder-completed-4.jpg',
+    image: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400&h=400&fit=crop',
     brand: '타임캡슐',
     title: '빛바랜 실크의\n세상 우아한 귀환',
     completedDate: '2024.11.12',
@@ -108,7 +108,7 @@ const completedProjects = [
   },
 ]
 
-export default function UpcyclePage() {
+function UpcyclePage() {
   const [activeTab, setActiveTab] = useState<UpcycleTabId>('voting')
 
   const renderTabContent = () => {
@@ -195,5 +195,4 @@ export default function UpcyclePage() {
   )
 }
 
-
-
+export default UpcyclePage

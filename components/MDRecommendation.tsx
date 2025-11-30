@@ -23,7 +23,7 @@ interface MDRecommendationProps {
 const defaultProducts: Product[] = [
   {
     id: '1',
-    image: '/placeholder-product-12.jpg',
+    image: 'https://images.unsplash.com/photo-1542272604-787c3835535d?w=400&h=400&fit=crop',
     badge: 'A등급',
     brand: '빈티지38',
     productName: "90s Levi's 501 데님",
@@ -32,7 +32,7 @@ const defaultProducts: Product[] = [
   },
   {
     id: '2',
-    image: '/placeholder-product-13.jpg',
+    image: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400&h=400&fit=crop',
     badge: 'S등급',
     brand: '레트로무드',
     productName: 'Y2K 크로쉐 망토',
@@ -41,7 +41,7 @@ const defaultProducts: Product[] = [
   },
   {
     id: '3',
-    image: '/placeholder-product-14.jpg',
+    image: 'https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=400&h=400&fit=crop',
     badge: 'A+등급',
     brand: '홍대빈티지',
     productName: 'Schott 라이더 자켓',
@@ -50,7 +50,7 @@ const defaultProducts: Product[] = [
   },
   {
     id: '4',
-    image: '/placeholder-product-15.jpg',
+    image: 'https://images.unsplash.com/photo-1541099649105-f69ad21f3246?w=400&h=400&fit=crop',
     badge: 'A등급',
     brand: '스트리트클래식',
     productName: 'Dickies 팬츠',

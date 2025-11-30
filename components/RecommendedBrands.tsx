@@ -22,7 +22,7 @@ interface RecommendedBrandsProps {
 const defaultProducts: Product[] = [
   {
     id: '1',
-    image: '/placeholder-product-7.jpg',
+    image: 'https://images.unsplash.com/photo-1551488831-00ddcb6c6bd3?w=400&h=400&fit=crop',
     badge: 'A+등급',
     brand: '아웃도어빈티지 x The North Face',
     productName: '눕시 다운',
@@ -31,7 +31,7 @@ const defaultProducts: Product[] = [
   },
   {
     id: '2',
-    image: '/placeholder-product-8.jpg',
+    image: 'https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=400&h=400&fit=crop',
     badge: 'A등급',
     brand: '프레피스타일 x Ralph Lauren',
     productName: '폴로 셔츠',
@@ -40,7 +40,7 @@ const defaultProducts: Product[] = [
   },
   {
     id: '3',
-    image: '/placeholder-product-9.jpg',
+    image: 'https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=400&h=400&fit=crop',
     badge: 'A등급',
     brand: '빈티지38 x Champion',
     productName: '스타디움 자켓',

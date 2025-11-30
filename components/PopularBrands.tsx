@@ -22,7 +22,7 @@ interface PopularBrandsProps {
 const defaultProducts: Product[] = [
   {
     id: '1',
-    image: '/placeholder-product-10.jpg',
+    image: 'https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=400&h=400&fit=crop',
     badge: 'A등급',
     brand: '스트릿아카이브',
     productName: 'Stussy 90s 티셔츠',
@@ -31,7 +31,7 @@ const defaultProducts: Product[] = [
   },
   {
     id: '2',
-    image: '/placeholder-product-11.jpg',
+    image: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400&h=400&fit=crop',
     badge: 'A등급',
     brand: '홍대빈티지',
     productName: 'Lacoste 가디건',

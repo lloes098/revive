@@ -238,7 +238,7 @@ export default function PopularTab({
           timeAgo="2시간 전"
           content="드디어 찾았다! 1989년 쇼트 레더 재킷 😍"
           hashtags={[]}
-          images={['/placeholder-post-1.jpg']}
+          images={['https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=600&h=600&fit=crop']}
           likes={356}
           comments={52}
         />
@@ -248,7 +248,7 @@ export default function PopularTab({
           timeAgo="5시간 전"
           content="Y2K 코디 완성! 어떤가요? 🦋✨"
           hashtags={[]}
-          images={['/placeholder-post-2.jpg']}
+          images={['https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&h=600&fit=crop']}
           likes={287}
           comments={45}
         />

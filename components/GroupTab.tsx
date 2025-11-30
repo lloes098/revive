@@ -1,6 +1,8 @@
 'use client'
 
+import { useState } from 'react'
 import styles from './GroupTab.module.css'
+import GroupJoinModal from './GroupJoinModal'
 
 interface Group {
   id: string
@@ -17,6 +19,25 @@ const defaultGroups: Group[] = [
 ]
 
 export default function GroupTab() {
+  const [selectedGroup, setSelectedGroup] = useState<Group | null>(null)
+  const [isModalOpen, setIsModalOpen] = useState(false)
+
+  const handleJoinClick = (group: Group) => {
+    setSelectedGroup(group)
+    setIsModalOpen(true)
+  }
+
+  const handleCloseModal = () => {
+    setIsModalOpen(false)
+    setSelectedGroup(null)
+  }
+
+  const handleJoin = () => {
+    // 가입 성공 처리
+    console.log(`가입 완료: ${selectedGroup?.name}`)
+    // 여기에 실제 가입 API 호출 로직 추가
+  }
+
   return (
     <div className={styles.container}>
       {/* 그룹 생성 섹션 */}
@@ -42,10 +63,26 @@ export default function GroupTab() {
               <h3 className={styles.groupName}>{group.name}</h3>
               <p className={styles.memberCount}>멤버 {group.memberCount.toLocaleString()}명</p>
             </div>
-            <button className={styles.joinButton}>가입</button>
+            <button
+              className={styles.joinButton}
+              onClick={() => handleJoinClick(group)}
+            >
+              가입
+            </button>
           </div>
         ))}
       </div>
+
+      {/* 그룹 가입 모달 */}
+      {selectedGroup && (
+        <GroupJoinModal
+          isOpen={isModalOpen}
+          onClose={handleCloseModal}
+          groupName={selectedGroup.name}
+          memberCount={selectedGroup.memberCount}
+          onJoin={handleJoin}
+        />
+      )}
     </div>
   )
 }

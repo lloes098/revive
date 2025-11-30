@@ -1,78 +1,12 @@
 'use client'
 
-import { useState, useEffect } from 'react'
-import { useRouter } from 'next/navigation'
-import { AuthModal } from '@/components/AuthModal'
-import { getCurrentUser, signOut } from '@/utils/auth'
+import { useState } from 'react'
 import styles from './page.module.css'
-
-interface UserData {
-  id: string
-  email: string
-  name?: string
-}
 
 type TabType = 'mypage' | 'myshop' | 'feed'
 
 export default function MyPage() {
-  const router = useRouter()
-  const [user, setUser] = useState<UserData | null>(null)
-  const [isLoading, setIsLoading] = useState(true)
-  const [showAuthModal, setShowAuthModal] = useState(false)
   const [activeTab, setActiveTab] = useState<TabType>('mypage')
-
-  useEffect(() => {
-    const loadUser = async () => {
-      const currentUser = await getCurrentUser()
-      if (currentUser) {
-        setUser(currentUser.user)
-      } else {
-        setShowAuthModal(true)
-      }
-      setIsLoading(false)
-    }
-    loadUser()
-  }, [])
-
-  const handleAuthSuccess = (accessToken: string, userData: UserData) => {
-    setUser(userData)
-    setShowAuthModal(false)
-  }
-
-  const handleLogout = () => {
-    signOut()
-    setTimeout(() => {
-      router.push('/')
-    }, 1000)
-  }
-
-  if (isLoading) {
-    return (
-      <div className={styles.loadingContainer}>
-        <div className={styles.loadingText}>로딩 중...</div>
-      </div>
-    )
-  }
-
-  if (!user && !isLoading) {
-    return (
-      <div className={styles.container}>
-        {showAuthModal && (
-          <AuthModal
-            onClose={() => {
-              setShowAuthModal(false)
-              router.push('/')
-            }}
-            onSuccess={handleAuthSuccess}
-          />
-        )}
-      </div>
-    )
-  }
-
-  if (!user) {
-    return null
-  }
 
   return (
     <div className={styles.container}>
@@ -359,15 +293,6 @@ export default function MyPage() {
         </>
       )}
 
-      {showAuthModal && (
-        <AuthModal
-          onClose={() => {
-            setShowAuthModal(false)
-            router.push('/')
-          }}
-          onSuccess={handleAuthSuccess}
-        />
-      )}
     </div>
   )
 }

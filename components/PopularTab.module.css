@@ -9,7 +9,7 @@
 
 .top3Container {
   display: flex;
-  padding: 16px 16px 16px 16px;
+  padding: 16px;
   flex-direction: column;
   align-items: flex-start;
   gap: 16px;
@@ -21,11 +21,12 @@
   width: 100%;
   box-sizing: border-box;
   min-height: fit-content;
+  overflow: hidden;
 }
 
 .tagsContainer {
   display: flex;
-  padding: 16px 16px 16px 16px;
+  padding: 16px;
   flex-direction: column;
   align-items: flex-start;
   gap: 24px;
@@ -85,24 +86,26 @@
   display: flex;
   flex-direction: column;
   gap: 12px;
+  width: 100%;
 }
 
 .memberCard {
   display: flex;
   flex-direction: column;
-  gap: 12px;
-  padding: 12px;
+  gap: 16px;
+  padding: 16px;
   background-color: white;
   border-radius: 12px;
-  width: calc(100% + 64px);
-  margin-right: -64px;
+  width: calc(100% + 16px);
+  margin-left: -8px;
+  margin-right: -8px;
   box-sizing: border-box;
 }
 
 .memberHeader {
   display: flex;
   align-items: flex-start;
-  gap: 12px;
+  gap: 16px;
 }
 
 .rankMedal {
@@ -142,7 +145,7 @@
   flex: 1;
   display: flex;
   flex-direction: column;
-  gap: 4px;
+  gap: 8px;
 }
 
 .memberNameRow {
@@ -185,7 +188,7 @@
 
 .memberStats {
   display: flex;
-  gap: 16px;
+  gap: 8px;
   flex-wrap: wrap;
 }
 

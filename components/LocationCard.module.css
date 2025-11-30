@@ -21,7 +21,8 @@
 
 .square {
   position: absolute;
-  border-radius: 0.25rem;
+  border-radius: 0.5rem;
+  background: rgba(132, 153, 115, 0.20);
 }
 
 .squareTopLeft {
@@ -29,7 +30,6 @@
   left: 0.75rem;
   width: 1.5rem;
   height: 1.5rem;
-  background-color: #C8E6C9;
 }
 
 .squareTopRight {
@@ -37,7 +37,6 @@
   right: 0.75rem;
   width: 2.5rem;
   height: 2.5rem;
-  background-color: #C8E6C9;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -48,7 +47,6 @@
   left: 0.75rem;
   width: 2rem;
   height: 2rem;
-  background-color: #FFCCBC;
 }
 
 .squareBottomRight {
@@ -56,7 +54,6 @@
   right: 0.75rem;
   width: 1.25rem;
   height: 1.25rem;
-  background-color: #C8E6C9;
 }
 
 .cardContent {
