@@ -1,5 +1,6 @@
 'use client'
 
+import { useState } from 'react'
 import styles from './ProductionCard.module.css'
 
 interface ProductionCardProps {
@@ -19,10 +20,19 @@ export default function ProductionCard({
   progressText,
   releaseDate,
 }: ProductionCardProps) {
+  const [imageError, setImageError] = useState(false)
+  const defaultImage = 'https://images.unsplash.com/photo-1541099649105-f69ad21f3246?w=400&h=400&fit=crop'
+  const imageUrl = image || defaultImage
+
   return (
     <div className={styles.card}>
       <div className={styles.imageContainer}>
-        <img src={image} alt={title} className={styles.image} />
+        <img 
+          src={imageError ? defaultImage : imageUrl} 
+          alt={title} 
+          className={styles.image}
+          onError={() => setImageError(true)}
+        />
       </div>
       <div className={styles.content}>
         <p className={styles.brand}>{brand}</p>

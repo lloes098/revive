@@ -1,162 +1,162 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import UpcycleIcon from '@/components/icons/UpcycleIcon'
 import UpcycleTabs, { UpcycleTabId } from '@/components/UpcycleTabs'
 import UpcycleBiddingCard from '@/components/UpcycleBiddingCard'
 import ProductionCard from '@/components/ProductionCard'
 import CompletedCard from '@/components/CompletedCard'
+import {
+  getVotingProjects,
+  getProductionProjects,
+  getCompletedProjects,
+  getVotingStats,
+  type UpcycleProject,
+  type ProductionProject,
+  type CompletedProject,
+} from '@/utils/upcycle'
 import styles from './page.module.css'
-
-const defaultProjects = [
-  {
-    id: '1',
-    image: 'https://images.unsplash.com/photo-1542272604-787c3835535d?w=400&h=400&fit=crop',
-    brand: '빈티지38',
-    title: '10년째 창고신세,\n그의 세련된 변신',
-    progress: 68,
-    price: '65,000원~',
-  },
-  {
-    id: '2',
-    image: 'https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=400&h=400&fit=crop',
-    brand: '레트로하우스',
-    title: '사장님도 잊어버린 90s 밴드티의 변신',
-    progress: 54,
-    price: '45,000원~',
-  },
-  {
-    id: '3',
-    image: 'https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=400&h=400&fit=crop',
-    brand: '홍대빈티지',
-    title: '손상된 레더의\n럭셔리한 재탄생',
-    progress: 82,
-    price: '9,000원~',
-  },
-  {
-    id: '4',
-    image: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400&h=400&fit=crop',
-    brand: '타임캡슐',
-    title: '빛바랜 실크의\n세상 우아한 귀환',
-    progress: 45,
-    price: '35,000원~',
-  },
-]
-
-const productionProjects = [
-  {
-    id: '1',
-    image: 'https://images.unsplash.com/photo-1541099649105-f69ad21f3246?w=400&h=400&fit=crop',
-    brand: '올드스쿨',
-    title: '먼지 쌓인 데님\n화려한 변신',
-    progress: 75,
-    progressText: '제작 진행중',
-    releaseDate: 'D-5',
-  },
-  {
-    id: '2',
-    image: 'https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=400&h=400&fit=crop',
-    brand: '빈티지마켓',
-    title: '해골티의\n새로운 시작',
-    progress: 30,
-    progressText: '원본 배송중',
-    releaseDate: 'D-10',
-  },
-  {
-    id: '3',
-    image: 'https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=400&h=400&fit=crop',
-    brand: '아카이브샵',
-    title: '낡은 가죽이\n프리미엄으로',
-    progress: 95,
-    progressText: '제품 배송중',
-    releaseDate: 'D-2',
-  },
-]
-
-const completedProjects = [
-  {
-    id: '1',
-    image: 'https://images.unsplash.com/photo-1542272604-787c3835535d?w=400&h=400&fit=crop',
-    brand: '빈티지38',
-    title: '10년째 창고신세,\n그의 세련된 변신',
-    completedDate: '2024.11.20',
-    price: '65,000원',
-  },
-  {
-    id: '2',
-    image: 'https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=400&h=400&fit=crop',
-    brand: '레트로하우스',
-    title: '사장님도 잊어버린\n90s 밴드티의 변신',
-    completedDate: '2024.11.18',
-    price: '45,000원',
-  },
-  {
-    id: '3',
-    image: 'https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=400&h=400&fit=crop',
-    brand: '홍대빈티지',
-    title: '손상된 레더의\n럭셔리한 재탄생',
-    completedDate: '2024.11.15',
-    price: '89,000원',
-  },
-  {
-    id: '4',
-    image: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400&h=400&fit=crop',
-    brand: '타임캡슐',
-    title: '빛바랜 실크의\n세상 우아한 귀환',
-    completedDate: '2024.11.12',
-    price: '35,000원',
-  },
-]
 
 function UpcyclePage() {
   const [activeTab, setActiveTab] = useState<UpcycleTabId>('voting')
+  const [votingProjects, setVotingProjects] = useState<UpcycleProject[]>([])
+  const [productionProjects, setProductionProjects] = useState<ProductionProject[]>([])
+  const [completedProjects, setCompletedProjects] = useState<CompletedProject[]>([])
+  const [stats, setStats] = useState({ completedProjects: 0, totalVotes: 0 })
+  const [isLoading, setIsLoading] = useState(true)
+
+  // 페이지 초기 로드 시 통계 및 데이터 로드
+  useEffect(() => {
+    loadStats()
+    loadData()
+  }, [])
+
+  // 탭 변경 시 데이터 로드 및 통계 새로고침
+  useEffect(() => {
+    loadData()
+    loadStats() // 탭 변경 시에도 통계 새로고침
+  }, [activeTab])
+
+  // 통계 데이터 로드 (헤더에 표시)
+  const loadStats = async () => {
+    try {
+      const votingStats = await getVotingStats()
+      console.log('Loaded stats:', votingStats) // 디버깅용
+      setStats(votingStats)
+    } catch (error) {
+      console.error('Failed to load stats:', error)
+      // 에러 발생 시에도 기본값으로 설정
+      setStats({ completedProjects: 0, totalVotes: 0 })
+    }
+  }
+
+  const loadData = async () => {
+    try {
+      setIsLoading(true)
+      
+      if (activeTab === 'voting') {
+        const projects = await getVotingProjects()
+        setVotingProjects(projects)
+      } else if (activeTab === 'production') {
+        const projects = await getProductionProjects()
+        setProductionProjects(projects)
+      } else if (activeTab === 'completed') {
+        const projects = await getCompletedProjects()
+        setCompletedProjects(projects)
+      }
+    } catch (error) {
+      console.error('Failed to load projects:', error)
+      // 에러 발생 시 빈 배열로 설정
+      setVotingProjects([])
+      setProductionProjects([])
+      setCompletedProjects([])
+    } finally {
+      setIsLoading(false)
+    }
+  }
+
+  // 투표 후 데이터 새로고침
+  const handleVoteChange = async () => {
+    if (activeTab === 'voting') {
+      await Promise.all([loadData(), loadStats()]) // 프로젝트와 통계 모두 새로고침
+    } else {
+      await loadStats() // 다른 탭이어도 통계는 업데이트
+    }
+  }
 
   const renderTabContent = () => {
     switch (activeTab) {
       case 'voting':
         return (
           <div className={styles.projectsGrid}>
-            {defaultProjects.map((project) => (
-              <UpcycleBiddingCard
-                key={project.id}
-                image={project.image}
-                brand={project.brand}
-                title={project.title}
-                progress={project.progress}
-                price={project.price}
-              />
-            ))}
+            {isLoading ? (
+              <div className={styles.loading}>로딩 중...</div>
+            ) : votingProjects.length === 0 ? (
+              <div className={styles.emptyState}>
+                <p>투표 중인 프로젝트가 없습니다.</p>
+              </div>
+            ) : (
+              votingProjects.map((project) => (
+                <UpcycleBiddingCard
+                  key={project.id}
+                  id={project.id}
+                  image={project.image}
+                  brand={project.brand}
+                  title={project.title}
+                  progress={project.progress}
+                  price={project.price}
+                  voteCount={project.vote_count || 0}
+                  onVoteChange={handleVoteChange}
+                />
+              ))
+            )}
           </div>
         )
       case 'production':
         return (
           <div className={styles.productionList}>
-            {productionProjects.map((project) => (
-              <ProductionCard
-                key={project.id}
-                image={project.image}
-                brand={project.brand}
-                title={project.title}
-                progress={project.progress}
-                progressText={project.progressText}
-                releaseDate={project.releaseDate}
-              />
-            ))}
+            {isLoading ? (
+              <div className={styles.loading}>로딩 중...</div>
+            ) : productionProjects.length === 0 ? (
+              <div className={styles.emptyState}>
+                <p>제작 중인 프로젝트가 없습니다.</p>
+              </div>
+            ) : (
+              productionProjects.map((project) => (
+                <ProductionCard
+                  key={project.id}
+                  image={project.image}
+                  brand={project.brand}
+                  title={project.title}
+                  progress={project.progress}
+                  progressText={project.progress_text}
+                  releaseDate={project.release_date}
+                />
+              ))
+            )}
           </div>
         )
       case 'completed':
         return (
           <div className={styles.projectsGrid}>
-            {completedProjects.map((project) => (
-              <CompletedCard
-                key={project.id}
-                image={project.image}
-                brand={project.brand}
-                title={project.title}
-                completedDate={project.completedDate}
-                price={project.price}
-              />
-            ))}
+            {isLoading ? (
+              <div className={styles.loading}>로딩 중...</div>
+            ) : completedProjects.length === 0 ? (
+              <div className={styles.emptyState}>
+                <p>완료된 프로젝트가 없습니다.</p>
+              </div>
+            ) : (
+              completedProjects.map((project) => (
+                <CompletedCard
+                  key={project.id}
+                  image={project.image}
+                  brand={project.brand}
+                  title={project.title}
+                  completedDate={project.completed_date}
+                  price={project.price}
+                />
+              ))
+            )}
           </div>
         )
       default:
@@ -176,11 +176,11 @@ function UpcyclePage() {
         <p className={styles.subtitle}>우리 재고가 달라졌어요!</p>
         <div className={styles.stats}>
           <div className={styles.statRow}>
-            <span className={styles.statNumber}>89</span>
+            <span className={styles.statNumber}>{stats.completedProjects}</span>
             <span className={styles.statText}>개의 프로젝트가 완료되고</span>
           </div>
           <div className={styles.statRow}>
-            <span className={styles.statNumber}>1,247</span>
+            <span className={styles.statNumber}>{stats.totalVotes.toLocaleString()}</span>
             <span className={styles.statText}>명이 투표 참여중</span>
           </div>
         </div>

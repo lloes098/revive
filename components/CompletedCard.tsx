@@ -1,5 +1,6 @@
 'use client'
 
+import { useState } from 'react'
 import styles from './CompletedCard.module.css'
 
 interface CompletedCardProps {
@@ -17,10 +18,19 @@ export default function CompletedCard({
   completedDate,
   price,
 }: CompletedCardProps) {
+  const [imageError, setImageError] = useState(false)
+  const defaultImage = 'https://images.unsplash.com/photo-1542272604-787c3835535d?w=400&h=400&fit=crop'
+  const imageUrl = image || defaultImage
+
   return (
     <div className={styles.card}>
       <div className={styles.imageContainer}>
-        <img src={image} alt={title} className={styles.image} />
+        <img 
+          src={imageError ? defaultImage : imageUrl} 
+          alt={title} 
+          className={styles.image}
+          onError={() => setImageError(true)}
+        />
         <div className={styles.completedBadge}>
           <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path
