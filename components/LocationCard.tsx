@@ -1,5 +1,6 @@
 'use client'
 
+import { useRouter } from 'next/navigation'
 import styles from './LocationCard.module.css'
 
 interface LocationCardProps {
@@ -15,6 +16,16 @@ export default function LocationCard({
   radius = 500,
   onApplyClick,
 }: LocationCardProps) {
+  const router = useRouter()
+
+  const handleApplyClick = () => {
+    if (onApplyClick) {
+      onApplyClick()
+    } else {
+      router.push('/resale/apply')
+    }
+  }
+
   return (
     <div className="flex flex-col">
       <div className={styles.card}>
@@ -52,7 +63,7 @@ export default function LocationCard({
           <p className={styles.subtitle}>반경 {radius}m 내 매장 {storeCount}곳</p>
         </div>
       </div>
-      <button className={styles.button} onClick={onApplyClick}>
+      <button className={styles.button} onClick={handleApplyClick}>
         <svg
           className={styles.buttonIcon}
           width="16"
@@ -83,7 +94,7 @@ export default function LocationCard({
             strokeLinejoin="round"
           />
         </svg>
-        <span className={styles.buttonText}>리셀판매신청하기</span>
+        <span className={styles.buttonText}>리셀 판매 신청하기</span>
       </button>
     </div>
   )
