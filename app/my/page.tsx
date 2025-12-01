@@ -1,14 +1,88 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { useRouter } from 'next/navigation'
+import { getCurrentUser, signOut } from '@/utils/auth'
+import { AuthModal } from '@/components/AuthModal'
 import styles from './page.module.css'
 
 type TabType = 'mypage' | 'myshop' | 'feed'
 
+interface User {
+  id: string
+  email: string
+  name?: string
+}
+
 export default function MyPage() {
   const router = useRouter()
   const [activeTab, setActiveTab] = useState<TabType>('mypage')
+  const [user, setUser] = useState<User | null>(null)
+  const [isLoading, setIsLoading] = useState(true)
+  const [showAuthModal, setShowAuthModal] = useState(false)
+
+  useEffect(() => {
+    checkAuth()
+  }, [])
+
+  const checkAuth = async () => {
+    try {
+      const authResult = await getCurrentUser()
+      if (authResult) {
+        setUser(authResult.user)
+        setShowAuthModal(false)
+      } else {
+        setShowAuthModal(true)
+      }
+    } catch (error) {
+      console.error('Auth check error:', error)
+      setShowAuthModal(true)
+    } finally {
+      setIsLoading(false)
+    }
+  }
+
+  const handleAuthSuccess = (accessToken: string, userData: User) => {
+    setUser(userData)
+    setShowAuthModal(false)
+  }
+
+  const handleLogout = async () => {
+    try {
+      await signOut()
+      setUser(null)
+      setShowAuthModal(true)
+    } catch (error) {
+      console.error('Logout error:', error)
+    }
+  }
+
+  if (isLoading) {
+    return (
+      <div className={styles.loadingContainer}>
+        <p className={styles.loadingText}>로딩 중...</p>
+      </div>
+    )
+  }
+
+  if (!user) {
+    return (
+      <div className={styles.container}>
+        <div className={styles.header}>
+          <h1 className={styles.headerTitle}>MY</h1>
+        </div>
+        {showAuthModal && (
+          <AuthModal
+            onClose={() => {
+              // 로그인 모달을 닫으면 홈으로 이동
+              router.push('/')
+            }}
+            onSuccess={handleAuthSuccess}
+          />
+        )}
+      </div>
+    )
+  }
 
   return (
     <div className={styles.container}>
@@ -39,11 +113,11 @@ export default function MyPage() {
           </div>
           <div className={styles.profileInfo}>
             <div className={styles.profileNameRow}>
-              <h2 className={styles.profileName}>빈티지러버</h2>
+              <h2 className={styles.profileName}>{user.name || '사용자'}</h2>
               <span className={styles.rankBadge}>Gold</span>
             </div>
             <p className={styles.profileDescription}>
-              90s 패션과 빈티지 데님을 사랑하는 리셀러입니다 ✨
+              {user.email}
             </p>
             <div className={styles.followStats}>
               <span>234 팔로워</span>
@@ -295,6 +369,12 @@ export default function MyPage() {
         </>
       )}
 
+      {showAuthModal && (
+        <AuthModal
+          onClose={() => setShowAuthModal(false)}
+          onSuccess={handleAuthSuccess}
+        />
+      )}
     </div>
   )
 }

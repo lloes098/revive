@@ -2,6 +2,7 @@
 
 import { useState } from 'react'
 import { useRouter } from 'next/navigation'
+import { signOut } from '@/utils/auth'
 import styles from './page.module.css'
 
 export default function SettingsPage() {
@@ -16,10 +17,13 @@ export default function SettingsPage() {
     setNotifications((prev) => ({ ...prev, [key]: !prev[key] }))
   }
 
-  const handleLogout = () => {
-    // TODO: 로그아웃 로직
-    console.log('Logout')
-    router.push('/')
+  const handleLogout = async () => {
+    try {
+      await signOut()
+      router.push('/')
+    } catch (error) {
+      console.error('Logout error:', error)
+    }
   }
 
   return (

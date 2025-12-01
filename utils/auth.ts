@@ -1,5 +1,8 @@
 // Supabase 인증 관련 유틸리티 함수들
-import { supabase } from '@/lib/supabase'
+import { createClient } from '@/lib/supabase-client'
+
+// 클라이언트 컴포넌트에서 사용할 Supabase 클라이언트
+const supabase = createClient()
 
 export interface AuthResult {
   accessToken: string
