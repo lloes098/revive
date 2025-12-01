@@ -1,41 +1,68 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import styles from './GroupTab.module.css'
 import GroupJoinModal from './GroupJoinModal'
-
-interface Group {
-  id: string
-  name: string
-  memberCount: number
-}
-
-const defaultGroups: Group[] = [
-  { id: '1', name: '90s Denim', memberCount: 1247 },
-  { id: '2', name: 'Y2K Fashion', memberCount: 2134 },
-  { id: '3', name: 'Archive Core', memberCount: 856 },
-  { id: '4', name: 'Sportswear', memberCount: 642 },
-  { id: '5', name: 'Leather Lovers', memberCount: 423 },
-]
+import CreateGroupModal from './CreateGroupModal'
+import { getGroups, createGroup, joinGroup, type Group } from '@/utils/groups'
 
 export default function GroupTab() {
+  const [groups, setGroups] = useState<Group[]>([])
+  const [isLoading, setIsLoading] = useState(true)
   const [selectedGroup, setSelectedGroup] = useState<Group | null>(null)
-  const [isModalOpen, setIsModalOpen] = useState(false)
+  const [isJoinModalOpen, setIsJoinModalOpen] = useState(false)
+  const [isCreateModalOpen, setIsCreateModalOpen] = useState(false)
+
+  useEffect(() => {
+    loadGroups()
+  }, [])
+
+  const loadGroups = async () => {
+    try {
+      setIsLoading(true)
+      const data = await getGroups()
+      setGroups(data)
+    } catch (error) {
+      console.error('Failed to load groups:', error)
+      // 에러 발생 시 빈 배열로 설정
+      setGroups([])
+    } finally {
+      setIsLoading(false)
+    }
+  }
+
+  const handleCreateGroup = async (groupData: { name: string; description: string; category: string }) => {
+    try {
+      await createGroup(groupData)
+      // 그룹 생성 후 목록 새로고침
+      await loadGroups()
+    } catch (error: any) {
+      throw error
+    }
+  }
 
   const handleJoinClick = (group: Group) => {
     setSelectedGroup(group)
-    setIsModalOpen(true)
+    setIsJoinModalOpen(true)
   }
 
-  const handleCloseModal = () => {
-    setIsModalOpen(false)
+  const handleCloseJoinModal = () => {
+    setIsJoinModalOpen(false)
     setSelectedGroup(null)
   }
 
-  const handleJoin = () => {
-    // 가입 성공 처리
-    console.log(`가입 완료: ${selectedGroup?.name}`)
-    // 여기에 실제 가입 API 호출 로직 추가
+  const handleJoin = async () => {
+    if (!selectedGroup) return
+    
+    try {
+      await joinGroup(selectedGroup.id)
+      // 가입 성공 후 목록 새로고침
+      await loadGroups()
+      handleCloseJoinModal()
+    } catch (error: any) {
+      console.error('Failed to join group:', error)
+      alert(error.message || '그룹 가입에 실패했습니다')
+    }
   }
 
   return (
@@ -47,42 +74,61 @@ export default function GroupTab() {
           <p>같은 취향의 사람들과</p>
           <p>더 깊은 이야기를 나누세요</p>
         </div>
-        <button className={styles.createButton}>
+        <button 
+          className={styles.createButton}
+          onClick={() => setIsCreateModalOpen(true)}
+        >
           + 새 그룹 만들기
         </button>
       </div>
 
       {/* 그룹 리스트 */}
       <div className={styles.groupsList}>
-        {defaultGroups.map((group) => (
-          <div key={group.id} className={styles.groupCard}>
-            <div className={styles.groupIcon}>
-              <div className={styles.iconPlaceholder} />
-            </div>
-            <div className={styles.groupInfo}>
-              <h3 className={styles.groupName}>{group.name}</h3>
-              <p className={styles.memberCount}>멤버 {group.memberCount.toLocaleString()}명</p>
-            </div>
-            <button
-              className={styles.joinButton}
-              onClick={() => handleJoinClick(group)}
-            >
-              가입
-            </button>
+        {isLoading ? (
+          <div className={styles.loading}>로딩 중...</div>
+        ) : groups.length === 0 ? (
+          <div className={styles.emptyState}>
+            <p>아직 생성된 그룹이 없습니다.</p>
+            <p>첫 번째 그룹을 만들어보세요!</p>
           </div>
-        ))}
+        ) : (
+          groups.map((group) => (
+            <div key={group.id} className={styles.groupCard}>
+              <div className={styles.groupIcon}>
+                <div className={styles.iconPlaceholder} />
+              </div>
+              <div className={styles.groupInfo}>
+                <h3 className={styles.groupName}>{group.name}</h3>
+                <p className={styles.memberCount}>멤버 {group.member_count.toLocaleString()}명</p>
+              </div>
+              <button
+                className={styles.joinButton}
+                onClick={() => handleJoinClick(group)}
+              >
+                가입
+              </button>
+            </div>
+          ))
+        )}
       </div>
 
       {/* 그룹 가입 모달 */}
       {selectedGroup && (
         <GroupJoinModal
-          isOpen={isModalOpen}
-          onClose={handleCloseModal}
+          isOpen={isJoinModalOpen}
+          onClose={handleCloseJoinModal}
           groupName={selectedGroup.name}
-          memberCount={selectedGroup.memberCount}
+          memberCount={selectedGroup.member_count}
           onJoin={handleJoin}
         />
       )}
+
+      {/* 그룹 생성 모달 */}
+      <CreateGroupModal
+        isOpen={isCreateModalOpen}
+        onClose={() => setIsCreateModalOpen(false)}
+        onCreate={handleCreateGroup}
+      />
     </div>
   )
 }
