@@ -129,8 +129,8 @@ function UpcyclePage() {
                   brand={project.brand}
                   title={project.title}
                   progress={project.progress}
-                  progressText={project.progress_text}
-                  releaseDate={project.release_date}
+                  progressText={project.progress_text || '제작 진행중'}
+                  releaseDate={project.release_date || 'D-0'}
                 />
               ))
             )}
@@ -152,7 +152,7 @@ function UpcyclePage() {
                   image={project.image}
                   brand={project.brand}
                   title={project.title}
-                  completedDate={project.completed_date}
+                  completedDate={project.completed_date || ''}
                   price={project.price}
                 />
               ))

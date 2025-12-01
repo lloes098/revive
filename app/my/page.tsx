@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useState, useEffect, Suspense } from 'react'
 import { useRouter, useSearchParams } from 'next/navigation'
 import { getCurrentUser, signOut } from '@/utils/auth'
 import { AuthModal } from '@/components/AuthModal'
@@ -14,7 +14,7 @@ interface User {
   name?: string
 }
 
-export default function MyPage() {
+function MyPageContent() {
   const router = useRouter()
   const searchParams = useSearchParams()
   const [activeTab, setActiveTab] = useState<TabType>('mypage')
@@ -401,5 +401,17 @@ export default function MyPage() {
         />
       )}
     </div>
+  )
+}
+
+export default function MyPage() {
+  return (
+    <Suspense fallback={
+      <div className={styles.loadingContainer}>
+        <p className={styles.loadingText}>로딩 중...</p>
+      </div>
+    }>
+      <MyPageContent />
+    </Suspense>
   )
 }
