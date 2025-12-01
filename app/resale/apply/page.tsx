@@ -20,8 +20,10 @@ export default function ResaleApplyPage() {
     e.preventDefault()
     // TODO: API 호출
     console.log('Form submitted:', formData)
-    // 제출 후 처리
-    router.push('/my')
+    // 제출 후 알림창 표시
+    alert('리셀 판매 신청이 완료되었습니다.')
+    // 제출 후 마이페이지의 판매중인 상품 탭으로 이동
+    router.push('/my?tab=myshop')
   }
 
   const handleInputChange = (field: string, value: string) => {

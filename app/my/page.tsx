@@ -1,7 +1,7 @@
 'use client'
 
 import { useState, useEffect } from 'react'
-import { useRouter } from 'next/navigation'
+import { useRouter, useSearchParams } from 'next/navigation'
 import { getCurrentUser, signOut } from '@/utils/auth'
 import { AuthModal } from '@/components/AuthModal'
 import styles from './page.module.css'
@@ -16,6 +16,7 @@ interface User {
 
 export default function MyPage() {
   const router = useRouter()
+  const searchParams = useSearchParams()
   const [activeTab, setActiveTab] = useState<TabType>('mypage')
   const [user, setUser] = useState<User | null>(null)
   const [isLoading, setIsLoading] = useState(true)
@@ -24,6 +25,13 @@ export default function MyPage() {
   useEffect(() => {
     checkAuth()
   }, [])
+
+  useEffect(() => {
+    const tab = searchParams.get('tab') as TabType
+    if (tab && ['mypage', 'myshop', 'feed'].includes(tab)) {
+      setActiveTab(tab)
+    }
+  }, [searchParams])
 
   const checkAuth = async () => {
     try {
@@ -167,19 +175,28 @@ export default function MyPage() {
       <div className={styles.actionButtons}>
         <button 
           className={`${styles.actionButton} ${activeTab === 'mypage' ? styles.actionButtonActive : ''}`}
-          onClick={() => setActiveTab('mypage')}
+          onClick={() => {
+            setActiveTab('mypage')
+            router.push('/my?tab=mypage')
+          }}
         >
           마이페이지
         </button>
         <button 
           className={`${styles.actionButton} ${activeTab === 'myshop' ? styles.actionButtonActive : ''}`}
-          onClick={() => setActiveTab('myshop')}
+          onClick={() => {
+            setActiveTab('myshop')
+            router.push('/my?tab=myshop')
+          }}
         >
           마이샵
         </button>
         <button 
           className={`${styles.actionButton} ${activeTab === 'feed' ? styles.actionButtonActive : ''}`}
-          onClick={() => setActiveTab('feed')}
+          onClick={() => {
+            setActiveTab('feed')
+            router.push('/my?tab=feed')
+          }}
         >
           개인 피드
         </button>
@@ -332,7 +349,11 @@ export default function MyPage() {
               {/* 포스트 카드 1 */}
               <div className={styles.postCard}>
                 <div className={styles.postImage}>
-                  <div className={styles.postImagePlaceholder}></div>
+                  <img 
+                    src="https://images.unsplash.com/photo-1551028719-00167b16eac5?w=800&h=600&fit=crop" 
+                    alt="Carhartt Work Jacket"
+                    className={styles.postImageImg}
+                  />
                 </div>
                 <div className={styles.postContent}>
                   <h4 className={styles.postTitle}>Carhartt Work Jacket</h4>
@@ -361,7 +382,11 @@ export default function MyPage() {
               <div className={styles.postCard}>
                 <div className={styles.postImage}>
                   <div className={styles.postBadge}>착용 사진</div>
-                  <div className={styles.postImagePlaceholder}></div>
+                  <img 
+                    src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=800&h=600&fit=crop" 
+                    alt="착용 사진"
+                    className={styles.postImageImg}
+                  />
                 </div>
               </div>
             </div>

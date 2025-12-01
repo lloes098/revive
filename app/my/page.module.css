@@ -468,6 +468,12 @@
   overflow: hidden;
 }
 
+.postImageImg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
 .postImagePlaceholder {
   width: 100%;
   height: 100%;
