@@ -79,3 +79,41 @@
   margin: 0;
 }
 
+.voteButton {
+  width: 100%;
+  padding: 0.5rem;
+  margin-top: 0.5rem;
+  background: linear-gradient(90deg, #849973 0%, #8AA6A3 100%);
+  border: none;
+  border-radius: 0.5rem;
+  color: white;
+  font-family: 'Inter', 'Noto Sans KR', sans-serif;
+  font-size: 0.75rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.voteButton:hover:not(:disabled) {
+  transform: translateY(-1px);
+  box-shadow: 0 2px 8px rgba(132, 153, 115, 0.3);
+}
+
+.voteButton:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+.voteButton.voted {
+  background: #E8E7E2;
+  color: #849973;
+}
+
+.voteCount {
+  text-align: center;
+  font-family: 'Inter', 'Noto Sans KR', sans-serif;
+  font-size: 0.625rem;
+  color: #6B6B6B;
+  margin-top: 0.25rem;
+}
+

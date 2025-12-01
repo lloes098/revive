@@ -143,3 +143,23 @@
   color: #6b6b6b;
 }
 
+.loading {
+  text-align: center;
+  padding: 3rem 1rem;
+  color: #6B6B6B;
+  font-family: 'Inter', 'Noto Sans KR', sans-serif;
+  font-size: 0.875rem;
+}
+
+.emptyState {
+  text-align: center;
+  padding: 3rem 1rem;
+  color: #6B6B6B;
+  font-family: 'Inter', 'Noto Sans KR', sans-serif;
+}
+
+.emptyState p {
+  margin: 0.5rem 0;
+  font-size: 0.875rem;
+}
+
