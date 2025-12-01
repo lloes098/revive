@@ -1,5 +1,6 @@
 'use client'
 
+import { useRouter } from 'next/navigation'
 import styles from './RecommendedBrands.module.css'
 import ProductCard from './ProductCard'
 
@@ -54,11 +55,21 @@ export default function RecommendedBrands({
   products = defaultProducts,
   onViewMoreClick,
 }: RecommendedBrandsProps) {
+  const router = useRouter()
+
+  const handleViewMore = () => {
+    if (onViewMoreClick) {
+      onViewMoreClick()
+    } else {
+      router.push('/products')
+    }
+  }
+
   return (
     <div className={styles.container}>
       <div className={styles.header}>
         <h2 className={styles.title}>{title}</h2>
-        <a className={styles.viewMore} onClick={onViewMoreClick}>
+        <a className={styles.viewMore} onClick={handleViewMore}>
           더보기 <span className={styles.arrow}>→</span>
         </a>
       </div>

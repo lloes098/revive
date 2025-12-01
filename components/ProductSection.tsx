@@ -56,7 +56,7 @@ export default function ProductSection({
       <div className={styles.header}>
         <h2 className={styles.title}>{title}</h2>
         <Link 
-          href="/upcycle" 
+          href="/products" 
           className={styles.viewMore}
           onClick={onViewMoreClick}
         >

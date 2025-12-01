@@ -1,5 +1,6 @@
 'use client'
 
+import { useRouter } from 'next/navigation'
 import styles from './DiscountedProducts.module.css'
 import ProductCard from './ProductCard'
 import { useState } from 'react'
@@ -66,14 +67,23 @@ export default function DiscountedProducts({
   products = defaultProducts,
   onViewAllClick,
 }: DiscountedProductsProps) {
+  const router = useRouter()
   const [selectedCategory, setSelectedCategory] = useState('전체')
+
+  const handleViewAll = () => {
+    if (onViewAllClick) {
+      onViewAllClick()
+    } else {
+      router.push('/products')
+    }
+  }
 
   return (
     <div className={styles.container}>
       <div className={styles.header}>
         <h2 className={styles.title}>{title}</h2>
-        <a className={styles.viewAll} onClick={onViewAllClick}>
-          전체 <span className={styles.arrow}>→</span>
+        <a className={styles.viewAll} onClick={handleViewAll}>
+          더보기 <span className={styles.arrow}>→</span>
         </a>
       </div>
       <div className={styles.categoryButtons}>

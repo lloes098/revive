@@ -1,5 +1,6 @@
 'use client'
 
+import { useRouter } from 'next/navigation'
 import styles from './MDRecommendation.module.css'
 import ProductCard from './ProductCard'
 
@@ -65,6 +66,16 @@ export default function MDRecommendation({
   products = defaultProducts,
   onViewMoreClick,
 }: MDRecommendationProps) {
+  const router = useRouter()
+
+  const handleViewMore = () => {
+    if (onViewMoreClick) {
+      onViewMoreClick()
+    } else {
+      router.push('/products')
+    }
+  }
+
   return (
     <div className={styles.container}>
       <div className={styles.header}>
@@ -72,7 +83,7 @@ export default function MDRecommendation({
           <h2 className={styles.title}>{title}</h2>
           <p className={styles.subtitle}>{subtitle}</p>
         </div>
-        <a className={styles.viewMore} onClick={onViewMoreClick}>
+        <a className={styles.viewMore} onClick={handleViewMore}>
           더보기 <span className={styles.arrow}>→</span>
         </a>
       </div>
