@@ -7,13 +7,34 @@
   box-sizing: border-box;
 }
 
+.imageWrapper {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  border-radius: 1rem;
+  overflow: hidden;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+}
+
 .imageContainer {
+  position: absolute;
+  top: 0;
+  left: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
-  border-radius: 1rem;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
-  display: block;
+  transition: opacity 0.8s ease-in-out;
+}
+
+.imageActive {
+  opacity: 1;
+  z-index: 1;
+}
+
+.imageInactive {
+  opacity: 0;
+  z-index: 0;
+  pointer-events: none;
 }
 
 .overlay {
@@ -27,6 +48,8 @@
   display: flex;
   flex-direction: column;
   gap: 8px;
+  z-index: 10;
+  pointer-events: none;
 }
 
 .textContent {
@@ -55,6 +78,7 @@
   display: flex;
   gap: 6px;
   margin-top: 8px;
+  pointer-events: auto;
 }
 
 .dotActive,
@@ -63,6 +87,7 @@
   height: 2px;
   border-radius: 1px;
   transition: all 0.3s;
+  cursor: pointer;
 }
 
 .dotActive {
@@ -72,5 +97,9 @@
 
 .dot {
   background-color: rgba(255, 255, 255, 0.5);
+}
+
+.dot:hover {
+  background-color: rgba(255, 255, 255, 0.8);
 }
 
